@@ -10,7 +10,7 @@
             <a href="{{ route('transactions.index')}}"><i class="fa fa-regular fa-money-bill"></i> Transactions</a>
         </li>
         <li>
-            <a href="{{ route('products.index')}}"><i class="fa fa-duotone fa-truck"></i> Transactions</a>
+            <a href="{{ route('users-list')}}"><i class="fa fa-duotone fa-truck"></i> Transactions</a>
         </li>
     </ul>
 </nav>

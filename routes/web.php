@@ -25,11 +25,16 @@ Route::get('/', function () {
 });
 Auth::routes();
 
+Route::get('/users-list', [UserController::class, 'index'])->name('users-list');
+Route::get('/users-add', [UserController::class, 'create'])->name('users-add');
+Route::get('/users-store', [UserController::class, 'store'])->name('users-store');
+Route::post('/users-store', [UserController::class, 'store'])->name('users-store');
+Route::get('/products-list', [ProductController::class, 'index'])->name('products-list');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/users', 'UserController@index');
 
 Route::resource('/orders', 'OrderController');
-Route::resource('/products', 'ProductController');
+//Route::resource('/products', 'ProductController');
 Route::resource('/suppliers', 'SupplierController');
 //Route::resource('users', 'UserController::class');
 Route::resource('/companies', 'CompanyController');

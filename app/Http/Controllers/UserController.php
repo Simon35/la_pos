@@ -14,9 +14,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        dd($users);
-        return view('welcome');
+        $users = User::paginate(5);
+        return view('users.index',['users' => $users]);
+        //$data = User::get();
+        //dd($users);
+        //return $data;
     }
 
     /**
@@ -26,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.add');
     }
 
     /**
@@ -37,7 +39,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = new User();
+        $users->name = $request->name;
+        $users->password = md5($request->password);
+        $users->is_admin = $request->is_admin;
+        $users->save();
+        //$users = User::create($request->all());
+
+        if($users) {
+            return redirect()->back()->with('User Created Successfully !');
+
+        }
+            return redirect()->back()->with('User Fail Successfully !');
     }
 
     /**

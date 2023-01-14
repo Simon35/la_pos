@@ -8,11 +8,12 @@
 <a href="{{ route('users-list')}}" class="btn btn-outline rounded-pill"><i class="fa fa-users"></i> Customers</a>
 
 <style>
-    .btn-outline{
+    .btn-outline {
         border-color: #008888;
         color: #008888;
     }
-    .btn-outline:hover{
+
+    .btn-outline:hover {
         background: #008888;
         color: #fff;
 

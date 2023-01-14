@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(5);
-        return view('users.index',['users' => $users]);
+        return view('users.index', ['users' => $users]);
         //$data = User::get();
         //dd($users);
         //return $data;
@@ -46,11 +46,10 @@ class UserController extends Controller
         $users->save();
         //$users = User::create($request->all());
 
-        if($users) {
+        if ($users) {
             return redirect()->back()->with('User Created Successfully !');
-
         }
-            return redirect()->back()->with('User Fail Successfully !');
+        return redirect()->back()->with('User Fail Successfully !');
     }
 
     /**
@@ -84,7 +83,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $users = User::find($id);
+        if (!$users) {
+            return back()->with('Error', 'User not found');
+        }
+        $users->update($request->all());
+        return back()->with('Success', 'User Updated successfully');
     }
 
     /**
@@ -95,6 +99,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = User::find($id);
+        if (!$users) {
+            return back()->with('Error', 'User not found');
+        }
+        $users->delete();
+        return back()->with('Success', 'User Deleted successfully');
     }
 }

@@ -25,10 +25,19 @@ Route::get('/', function () {
 });
 Auth::routes();
 
+/**
+ * Route for products
+ */
 Route::get('/users-list', [UserController::class, 'index'])->name('users-list');
 Route::get('/users-add', [UserController::class, 'create'])->name('users-add');
 Route::get('/users-store', [UserController::class, 'store'])->name('users-store');
 Route::post('/users-store', [UserController::class, 'store'])->name('users-store');
+Route::post('/users-update/{id}', [UserController::class, 'update'])->name('users-update');
+Route::post('/users-destroy/{id}', [UserController::class, 'delete'])->name('users-destroy');
+
+/**
+ * Route for products
+ */
 Route::get('/products-list', [ProductController::class, 'index'])->name('products-list');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -39,4 +48,3 @@ Route::resource('/suppliers', 'SupplierController');
 //Route::resource('users', 'UserController::class');
 Route::resource('/companies', 'CompanyController');
 Route::resource('/transactions', 'TransactionController');
-

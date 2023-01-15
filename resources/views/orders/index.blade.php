@@ -204,3 +204,9 @@
 </style>
 
 @endsection
+
+<script>
+    $(document).ready(function(){
+        alert('coucou');
+    })
+</script>

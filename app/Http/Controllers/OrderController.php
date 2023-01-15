@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,7 +15,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        $orders = Order::all();
+        return view('orders.index',[
+            'products' => $products,
+            'orders' => $orders
+        ]);
     }
 
     /**

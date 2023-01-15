@@ -45,6 +45,11 @@ Route::post('/products-store', [ProductController::class, 'store'])->name('produ
 Route::put('/products-update/{id}', [ProductController::class, 'update'])->name('products-update');
 Route::post('/products-destroy/{id}', [UserController::class, 'delete'])->name('products-destroy');
 
+/**
+ * Route for orders
+ */
+Route::get('/orders-list', [OrderController::class, 'index'])->name('orders-list');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/orders', 'OrderController');

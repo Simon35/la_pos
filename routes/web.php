@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionController;
 
@@ -26,7 +27,7 @@ Route::get('/', function () {
 Auth::routes();
 
 /**
- * Route for products
+ * Route for users
  */
 Route::get('/users-list', [UserController::class, 'index'])->name('users-list');
 Route::get('/users-add', [UserController::class, 'create'])->name('users-add');
@@ -39,6 +40,10 @@ Route::post('/users-destroy/{id}', [UserController::class, 'delete'])->name('use
  * Route for products
  */
 Route::get('/products-list', [ProductController::class, 'index'])->name('products-list');
+Route::get('/products-add', [ProductController::class, 'create'])->name('products-add');
+Route::post('/products-store', [ProductController::class, 'store'])->name('products-store');
+Route::put('/products-update/{id}', [ProductController::class, 'update'])->name('products-update');
+Route::post('/products-destroy/{id}', [UserController::class, 'delete'])->name('products-destroy');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

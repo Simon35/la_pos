@@ -37,11 +37,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $products = Product::create($request->all());
-        return redirect()->back()->with('User Created Successfully !');
-
-        //        if ($users) {
-        //      }
-        //    return redirect()->back()->with('User Fail Successfully !');
+        return redirect()->back()->with('Product Created Successfully !');
     }
 
     /**
@@ -76,12 +72,12 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         $id = $request->id;
-        $users = Product::find($id);
-        if (!$users) {
+        $product = Product::find($id);
+        if (!$product) {
             return back()->with('Error', 'Product not found');
         }
 
-        $users->update($request->all());
+        $product->update($request->all());
         return back()->with('Success', 'Product Updated successfully');
     }
 
